@@ -7,6 +7,10 @@ import shutil
 import sys
 from pathlib import Path
 
+# Windows 控制台 UTF-8 支持
+if sys.platform == "win32":
+    sys.stdout.reconfigure(encoding="utf-8")
+
 # 文件分类规则：扩展名 -> 分类文件夹名
 RULES = {
     # 图片
