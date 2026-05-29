@@ -68,7 +68,8 @@ def scan_directory(path):
 
     result = {}
     for item in path.iterdir():
-        if item.is_file() and not item.name.startswith("."):
+        skip_exts = {".lnk", ".url"}
+        if item.is_file() and not item.name.startswith(".") and item.suffix.lower() not in skip_exts:
             category = classify(item.name)
             result.setdefault(category, []).append(item.name)
     return result
